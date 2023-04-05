@@ -107,14 +107,12 @@ function checkCheckbox() {
     if (document.getElementById('s2').checked) {
         data.push("s2");
     }
+    localStorage.setItem('selectedSymptoms', JSON.stringify(data));
     alert(data);
+}
+
     window.location = 'confirmsymptoms.html';
 
-    
-
-    
-
-}
 </script>  
 
     <div id="edit" class="modal">
