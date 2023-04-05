@@ -103,16 +103,21 @@ function checkCheckbox() {
     }
     localStorage.setItem('selectedSymptoms', JSON.stringify(data));
     alert(data);
+    window.location = 'confirmsymptoms.html'
 }
 
-    window.location = 'confirmsymptoms.html';
+    
 
 </script>  
 
     <div id="edit" class="modal">
-        <h1>hey am modal \(0_o)/</h1>
+        <h1>Symptom</h1>
         <div class="modal-content">
-            <h4>Modal Header</h4>
+            <h4>Information</h4>
+            <p>A bunch of text</p>
+            <h4>What this can imply</h4>
+            <p>A bunch of text</p>
+            <h4>How to treat</h4>
             <p>A bunch of text</p>
         </div>
     </div>
