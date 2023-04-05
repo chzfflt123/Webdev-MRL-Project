@@ -43,25 +43,9 @@
 
 
     <script>
-        let data = [];
-    if (document.getElementById('s1').checked) {
-        data.push("s1");
-    }
-    if (document.getElementById('s2').checked) {
-        data.push("s2");
-    }
-
-    
- 
-    let list = document.getElementById("myList");
-         
-    data.forEach((item)=>{
-      let li = document.createElement("li");
-      li.innerText = item;
-      list.appendChild(li);
-    })
-    
-window.open('confirmsymptoms.html');
+    function disp(data) {
+    alert(data);
+        }
 
     </script>
 
