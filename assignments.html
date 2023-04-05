@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Document</title>
+
+
+</head>
+<body>
+    
+
+    <nav class="teal darken-1">
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+                <i class="material-icons left">school</i>
+                <i class="material-icons left">face</i>
+                Homework Manager
+            </a>
+            <a href ="index.html" class = "sidenav-trigger">
+                <i class = "material-icons">menu</i>
+            </a>
+            <!-- a is for hyperlink -->
+            <!-- ul for unordered list -->
+            <!-- li for list items -->
+            <ul class="right">
+                <li>
+                    <a href="index.html">
+                        <i class="material-icons left">home</i>
+                        Home
+                    </a>
+                </li>
+                <li class = "active">
+                    <a href="assignments.html">
+                        <i class="material-icons left">list</i>
+                        Assignments
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class = "container">
+        <h1>Birthdays:</h1>
+        <table>
+            <thead>
+                <!-- tr = table row -->
+                <tr>
+                    <!-- th = table header -->
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Age</th>
+                    <th>Birthday</th>
+                    <th>Zodiac</th>
+                    <th>Present?</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ekmekci</td>
+                    <td>Anna</td>
+                    <td>14</td>
+                    <td>IDK</td>
+                    <td>Zodiac de IDK</td>
+                    <td>Yes No Maybe So</td>
+                    <td>
+                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
+                            <i class="material-icons right">edit</i>Info/Edit
+                        </a>
+                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
+                            <i class="material-icons right">delete</i>Delete
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lee</td>
+                    <td>Dyanne</td>
+                    <td>14</td>
+                    <td>2008-11-??</td>
+                    <td>Scorpio</td>
+                    <td>Yes 100%</td>
+                    <td>
+                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
+                            <i class="material-icons right">edit</i>Info/Edit
+                        </a>
+                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
+                            <i class="material-icons right">delete</i>Delete
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Guven</td>
+                    <td>Berra</td>
+                    <td>14</td>
+                    <td>2008-01-??</td>
+                    <td>Capricorn</td>
+                    <td>Hopefully</td>
+                    <td>
+                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
+                            <i class="material-icons right">edit</i>Info/Edit
+                        </a>
+                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
+                            <i class="material-icons right">delete</i>Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class = "section">
+            
+        </div>
+    </div>
+    
+
+    <div class="modal" id ="edit">
+        <div class="container">
+            <p>You cannot restore data once it is deleted. Confirm delete?</p>
+            <a class = "waves-effect waves-light btn-small red modal-trigger" href="assignments.html">
+                <i class="material-icons right">delete_forever</i>Confirm Delete
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>M.AutoInit();</script>
+
+</body>
+</html>
