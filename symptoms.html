@@ -55,7 +55,7 @@
                     <td>
                         <p>
                             <label>
-                              <input type="checkbox" name="symptom" class="s1" value="sympotm 1 name"/>
+                              <input type="checkbox" name="symptom" class="s1" value="sympotm 1 name" id="s1"/>
                               <span>Symptom 1</span>
                             </label>
                           </p>
@@ -70,7 +70,7 @@
                     <td><label>
                         <p>
                             <label>
-                              <input type="checkbox" name="symptom" class="s2" value="sympotm 2 name"/>
+                              <input type="checkbox" name="symptom" class="s2" value="sympotm 2 name" id="s2"/>
                               <span>Symptom 2</span>
                             </label>
                           </p>
@@ -82,11 +82,32 @@
                 </tr>
             </tbody>
         </table>
-        <div class="section" id="controls">
-            <a class="btn waves-effect teal modal-trigger"><i class="material-icons left" name="action"
-                onclick="checkAnswers()">navigate_next</i>Submit</a>
-        </div>
+        <button onclick="checkCheckbox()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+        </button>
+        <div id="feedback"></div>
+
+
+        <div id="result"></div>
     </div>
+
+<br> <br>  
+<script>  
+function checkCheckbox() {
+    alert("ran");
+    let data = [];
+    if (document.getElementById('s1').checked) {
+        data.push("s1");
+    }
+    if (document.getElementById('s2').checked) {
+        data.push("s2");
+    }
+    alert(data);
+
+    
+
+}
+</script>  
 
     <div id="edit" class="modal">
         <h1>hey am modal \(0_o)/</h1>
@@ -97,7 +118,6 @@
     </div>
     
     
-    <script src="getsymptoms.js"> </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
