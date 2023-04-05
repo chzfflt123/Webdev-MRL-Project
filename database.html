@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
+    <style>
+        form {
+        background-color: #ffffff;
+        width: 300px;
+        height: 44px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        }
+        input {
+            all: unset;
+            font: 16px system-ui;
+            color: #7a7a7a;
+            height: 100%;
+            width: 100%;
+            padding: 6px 10px;
+        }
+    </style>
 
 
 </head>
@@ -16,12 +35,11 @@
     <nav class="teal darken-1">
         <div class="nav-wrapper">
             <a href="index.html" class="brand-logo">
-                <i class="material-icons left">school</i>
-                <i class="material-icons left">face</i>
-                Homework Manager
+                <i class="material-icons left">local_hospital</i>
+                Disease Detector
             </a>
             <a href ="index.html" class = "sidenav-trigger">
-                <i class = "material-icons">menu</i>
+                <i class = "material-icons">local_hospital</i>
             </a>
             <!-- a is for hyperlink -->
             <!-- ul for unordered list -->
@@ -33,10 +51,16 @@
                         Home
                     </a>
                 </li>
-                <li class = "active">
-                    <a href="assignments.html">
-                        <i class="material-icons left">list</i>
-                        Assignments
+                <li>
+                    <a href="index.html">
+                        <i class="material-icons left">person_add</i>
+                        New Test
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="database.html">
+                        <i class="material-icons left">people</i>
+                        Database
                     </a>
                 </li>
             </ul>
@@ -44,29 +68,44 @@
     </nav>
 
     <div class = "container">
-        <h1>Birthdays:</h1>
+        <h4>Database 
+            <form id="form"> 
+                <input type="search" placeholder="Search...">
+                <a class="btn-floating btn-small waves-effect waves-light">
+                    <i class="material-icons">search</i>
+                </a>
+            </form>
+        </h4>
+
         <table>
             <thead>
                 <!-- tr = table row -->
                 <tr>
                     <!-- th = table header -->
+                    <th> </th>
                     <th>Last Name</th>
+                    <th>Middle Initial</th>
                     <th>First Name</th>
                     <th>Age</th>
-                    <th>Birthday</th>
-                    <th>Zodiac</th>
-                    <th>Present?</th>
+                    <th>Date of Birth</th>
+                    <th>Disease</th>
                     <th> </th>
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
+                            <i class="material-icons">info</i>
+                        </a>
+                    </td>
                     <td>Ekmekci</td>
+                    <td>Y</td>
                     <td>Anna</td>
                     <td>14</td>
-                    <td>IDK</td>
-                    <td>Zodiac de IDK</td>
-                    <td>Yes No Maybe So</td>
+                    <td>2008-05-??</td>
+                    <td>Hard-workingness</td>
                     <td>
                         <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
                             <i class="material-icons right">edit</i>Info/Edit
@@ -77,12 +116,17 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
+                            <i class="material-icons">info</i>
+                        </a>
+                    </td>
                     <td>Lee</td>
+                    <td>D</td>
                     <td>Dyanne</td>
                     <td>14</td>
                     <td>2008-11-??</td>
-                    <td>Scorpio</td>
-                    <td>Yes 100%</td>
+                    <td>Lazyness</td>
                     <td>
                         <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
                             <i class="material-icons right">edit</i>Info/Edit
@@ -93,12 +137,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Guven</td>
-                    <td>Berra</td>
-                    <td>14</td>
-                    <td>2008-01-??</td>
-                    <td>Capricorn</td>
-                    <td>Hopefully</td>
+                    <td>
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
+                            <i class="material-icons">info</i>
+                        </a>
+                    </td>
+                    <td>Smith</td>
+                    <td></td>
+                    <td>Johnson</td>
+                    <td>44</td>
+                    <td>1979-05-??</td>
+                    <td>Cold</td>
                     <td>
                         <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
                             <i class="material-icons right">edit</i>Info/Edit
@@ -117,16 +166,48 @@
     
 
     <div class="modal" id ="edit">
-        <div class="container">
-            <p>You cannot restore data once it is deleted. Confirm delete?</p>
-            <a class = "waves-effect waves-light btn-small red modal-trigger" href="assignments.html">
-                <i class="material-icons right">delete_forever</i>Confirm Delete
+        <div class="modal-content">
+            <h4>Confirm delete?</h4>
+            <p>You cannot restore data once it is deleted.</p>
+        </div>
+        <div class="modal-footer">
+            <a class = "waves-effect waves-light btn-small red modal-trigger" href="database.html">
+                <i class="material-icons right">delete_forever</i>Delete
             </a>
+        </div>   
+    </div>
+
+    <div class="modal" id="inform">
+        <!-- This should be different for each patient -->
+        <div class="modal-content">
+            <h4>Disease Data</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Symptoms</th>
+                        <th>Disease ID</th>
+                        <th>Disease</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ekmekci, Anna Y</td>
+                        <td>Sore throat, sleepy</td>
+                        <td>029384</td>
+                        <td>Hard-workingness</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a class = "waves-effect waves-light btn-small red modal-trigger" href="database.html">Confirm</a>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
+    
 
 </body>
 </html>
