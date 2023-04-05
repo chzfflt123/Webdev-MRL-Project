@@ -8,7 +8,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
     <style>
-
+        form {
+        background-color: #ffffff;
+        width: 300px;
+        height: 44px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        }
+        input {
+            all: unset;
+            font: 16px system-ui;
+            color: #7a7a7a;
+            height: 100%;
+            width: 100%;
+            padding: 6px 10px;
+        }
     </style>
 
 
@@ -52,7 +68,14 @@
     </nav>
 
     <div class = "container">
-        <h4>Database <input placeholder="Search.." class="right-align"></h4>
+        <h4>Database 
+            <form id="form"> 
+                <input type="search" placeholder="Search...">
+                <a class="btn-floating btn-small waves-effect waves-light">
+                    <i class="material-icons">search</i>
+                </a>
+            </form>
+        </h4>
 
         <table>
             <thead>
@@ -73,7 +96,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red">
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
                             <i class="material-icons">info</i>
                         </a>
                     </td>
@@ -94,7 +117,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red">
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
                             <i class="material-icons">info</i>
                         </a>
                     </td>
@@ -115,7 +138,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red">
+                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
                             <i class="material-icons">info</i>
                         </a>
                     </td>
@@ -143,16 +166,48 @@
     
 
     <div class="modal" id ="edit">
-        <div class="container">
-            <p>You cannot restore data once it is deleted. Confirm delete?</p>
-            <a class = "waves-effect waves-light btn-small red modal-trigger" href="assignments.html">
-                <i class="material-icons right">delete_forever</i>Confirm Delete
+        <div class="modal-content">
+            <h4>Confirm delete?</h4>
+            <p>You cannot restore data once it is deleted.</p>
+        </div>
+        <div class="modal-footer">
+            <a class = "waves-effect waves-light btn-small red modal-trigger" href="database.html">
+                <i class="material-icons right">delete_forever</i>Delete
             </a>
+        </div>   
+    </div>
+
+    <div class="modal" id="inform">
+        <!-- This should be different for each patient -->
+        <div class="modal-content">
+            <h4>Disease Data</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Symptoms</th>
+                        <th>Disease ID</th>
+                        <th>Disease</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ekmekci, Anna Y</td>
+                        <td>Sore throat, sleepy</td>
+                        <td>029384</td>
+                        <td>Hard-workingness</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a class = "waves-effect waves-light btn-small red modal-trigger" href="database.html">Confirm</a>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
+    
 
 </body>
 </html>
