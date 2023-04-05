@@ -11,6 +11,34 @@
     <title>Symptoms</title>
 </head>
 <body>
+    <nav class="teal darken-1">
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+                <i class="material-icons left">face</i>
+                Disease Detector
+            </a>
+            <a href ="index.html" class = "sidenav-trigger">
+                <i class = "material-icons">local_hospital</i>
+            </a>
+            <!-- a is for hyperlink -->
+            <!-- ul for unordered list -->
+            <!-- li for list items -->
+            <ul class="right">
+                <li>
+                    <a href="index.html">
+                        <i class="material-icons left">person_add</i>
+                        New Test
+                    </a>
+                </li>
+                <li>
+                    <a href="database.html">
+                        <i class="material-icons left">people</i>
+                        Database
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 
     <div class="container">
@@ -18,42 +46,83 @@
         <table>
             <thead>
                 <tr>
-                    <th></th>
                     <th>Symptom</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><p>
-                        <label>
-                          <input type="checkbox" class="filled-in"/>
-                          <span></span>
-                        </label>
-                      </p></td>
-                    <td>Symptom 1</td>
-                    <td><a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">info</i></a>
+                    <td>
+                        <p>
+                            <label>
+                              <input type="checkbox" name="symptom" class="s1" value="sympotm 1 name" id="s1"/>
+                              <span>Symptom 1</span>
+                            </label>
+                          </p>
+                    <td>
+                        <div class="section" id="controls">
+                            <a class="btn-floating btn-large waves-effect waves-light teal modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><p>
-                        <label>
-                          <input type="checkbox" class="filled-in"  />
-                          <span></span>
-                        </label>
-                      </p></td>
-                    <td>Symptom 2</td>
-                    <td><a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">info</i></a>
+                    
+                    <td><label>
+                        <p>
+                            <label>
+                              <input type="checkbox" name="symptom" class="s2" value="sympotm 2 name" id="s2"/>
+                              <span>Symptom 2</span>
+                            </label>
+                          </p>
+                    <td>
+                        <div class="section" id="controls">
+                            <a class="btn-floating btn-large waves-effect waves-light teal modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="section" id="controls">
-            <a class="btn waves-effect teal modal-trigger" href="#submit"><i class="material-icons left">navigate_next</i>Submit</a>
-        </div>
+        <button onclick="checkCheckbox()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+        </button>
+        <div id="feedback"></div>
+
+
+        <div id="result"></div>
     </div>
 
+<br> <br>  
+<script>  
+function checkCheckbox() {
+    let data = [];
+    if (document.getElementById('s1').checked) {
+        data.push("s1");
+    }
+    if (document.getElementById('s2').checked) {
+        data.push("s2");
+    }
+    alert(data);
+    window.location = 'confirmsymptoms.html';
+
+    
+
+    
+
+}
+</script>  
+
+    <div id="edit" class="modal">
+        <h1>hey am modal \(0_o)/</h1>
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+    </div>
+    
+    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>M.AutoInit();</script>
 
 </body>
 </html>
