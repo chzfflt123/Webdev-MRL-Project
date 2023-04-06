@@ -48,7 +48,7 @@
 
 
     <div class="container">
-        <h1>Select Your Symptoms:</h1>
+        <h4>Select Your Symptoms:</h4>
         <table>
             <thead>
                 <tr>
@@ -67,7 +67,7 @@
                           </p>
                     <td>
                         <div class="section" id="controls">
-                            <a class="btn-floating btn-large waves-effect waves-light teal modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
                         </div>
                     </td>
                 </tr>
@@ -82,12 +82,13 @@
                           </p>
                     <td>
                         <div class="section" id="controls">
-                            <a class="btn-floating btn-large waves-effect waves-light teal modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <br>
         <button onclick="checkCheckbox()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right"></i>
         </button>
@@ -116,14 +117,16 @@ function checkCheckbox() {
 </script>  
 
     <div id="edit" class="modal">
-        <h1>Symptom</h1>
-        <div class="modal-content">
-            <h4>Information</h4>
-            <p>A bunch of text</p>
-            <h4>What this can imply</h4>
-            <p>A bunch of text</p>
-            <h4>How to treat</h4>
-            <p>A bunch of text</p>
+        <div class = "container">
+            <h1>Symptom</h1>
+            <div class="modal-content">
+                <h4>Information</h4>
+                <p>A bunch of text</p>
+                <h4>What this can imply</h4>
+                <p>A bunch of text</p>
+                <h4>How to treat</h4>
+                <p>A bunch of text</p>
+            </div>
         </div>
     </div>
     

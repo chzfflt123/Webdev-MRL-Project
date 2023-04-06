@@ -24,14 +24,14 @@
             <!-- ul for unordered list -->
             <!-- li for list items -->
             <ul class="right">
-                <li class="active">
+                <li>
                     <a href="index.html">
                         <i class="material-icons left">home</i>
                         Home
                     </a>
                 </li>
-                <li>
-                    <a href="index.html">
+                <li class="active">
+                    <a href="intro.html">
                         <i class="material-icons left">person_add</i>
                         New Diagnosis
                     </a>
@@ -45,13 +45,14 @@
             </ul>
         </div>
     </nav>
-    
-    <h1>Selected Symptoms:</h1>
-    <ul id="selected-symptoms"></ul>
+    <div class="container">
+        <h4>Selected Symptoms:</h4>
+        <ul id="selected-symptoms"></ul>
 
-    <a class = "waves-effect waves-light btn-large orange modal-trigger" href="results.html">
-        <i class="material-icons right">chevron_right</i>Continue
-    </a>
+        <a class = "waves-effect waves-light btn-large orange modal-trigger" href="results.html">
+            <i class="material-icons right">chevron_right</i>Continue
+        </a>
+    </div>
 
     <script>
         // Retrieve the selectedSymptoms array from localStorage
@@ -60,7 +61,7 @@
         // Display the selected symptoms in an unordered list
         const selectedSymptomsList = document.getElementById('selected-symptoms');
         selectedSymptoms.forEach(symptom => {
-            const li = document.createElement('h4');
+            const li = document.createElement('h5');
             li.innerText = symptom;
             selectedSymptomsList.appendChild(li);
         });

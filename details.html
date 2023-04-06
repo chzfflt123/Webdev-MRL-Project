@@ -48,7 +48,7 @@
     </nav>
 
     <div class = "container">
-        <h1>Ekmekci, Anna Y</h1>
+        <h4>Ekmekci, Anna Y</h4>
         <table>
             <thead>
                 <!-- tr = table row -->
@@ -59,8 +59,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Biological Gender:</td>
+                    <td>Gender:</td>
                     <td>F</td>
+                </tr>
+                <tr>
+                    <td>Weight(kg):</td>
+                    <td>??</td>
+                </tr>
+                <tr>
+                    <td>Height(cm):</td>
+                    <td>??</td>
                 </tr>
                 <tr>
                     <td>Date of Birth:</td>
@@ -69,19 +77,86 @@
             </tbody>
         </table>
               
-                
-        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="details.html">
+        <br>
+        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="#edit">
             <i class="material-icons right">edit</i>Info/Edit
         </a>
-        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
-            <i class="material-icons right">delete</i>Delete
-        </a>
-
-        <br>
         <a class = "waves-effect waves-light btn-small orange" href="database.html">
             <i class="material-icons right">chevron_left</i>Return
         </a>
     </div>
+
+    <div id="edit" class="modal">
+        <div class = "container">
+            <div class="section" id="add">
+                <form id="addForm">
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                            <label for="titleInput">Patient First Name</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                            <label for="titleInput">Patient Middle Initial</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                            <label for="titleInput">Patient Last Name</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input type="number" id="priorityInput" name="age" class="validate" min=0 max=120 value=1>
+                            <label for="priorityInput">Age</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <select type="number" id="subjectInput" name="subject" id="subjectInput">
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value=1>Male</option>
+                                <option value=2>Female</option>
+                                <option value=3>Non-Binary</option>
+                              </select>
+                              <label for="subjectInput">Gender</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="number" id="priorityInput" name="weight" class="validate" min=0 max=120 value=1>
+                            <label for="priorityInput">Weight(kg)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="number" id="priorityInput" name="height" class="validate" min=0 max=120 value=1>
+                            <label for="priorityInput">Height(cm)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="date" id="dueDateInput" name="DOB" id="dueDateInput">
+                            <label for="dueDateInput">DOB</label>
+                        </div>
+                    </div>
+    
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit">
+                        <i class="material-icons right">send</i>
+                        Save edit
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>

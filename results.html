@@ -26,19 +26,19 @@
             <!-- ul for unordered list -->
             <!-- li for list items -->
             <ul class="right">
-                <li class="active">
+                <li>
                     <a href="index.html">
                         <i class="material-icons left">home</i>
                         Home
                     </a>
                 </li>
-                <li>
-                    <a href="index.html">
+                <li class="active">
+                    <a href="intro.html">
                         <i class="material-icons left">person_add</i>
                         New Diagnosis
                     </a>
                 </li>
-                <li>
+                <li >
                     <a href="database.html">
                         <i class="material-icons left">people</i>
                         Database
@@ -49,28 +49,28 @@
     </nav>
 
     <div class = "container">
-        <h1>Based on reuslts your symptoms showed...</h1>
+        <h4>Based on reuslts your symptoms showed...</h4>
         <ul id="selected-symptoms"></ul>
-        <h1>What does this mean?</h1>
-        <h4>Will give list of possible diseases- need to create database first to fetch that information and run algorithm</h2>
+        <h4>What does this mean?</h4>
+        <h6>Will give list of possible diseases- need to create database first to fetch that information and run algorithm</h6>
     </div>
 <script>
         const selectedSymptoms = JSON.parse(localStorage.getItem('selectedSymptoms'));
 
 const selectedSymptomsList = document.getElementById('selected-symptoms');
 selectedSymptoms.forEach(symptom => {
-    const li = document.createElement('h4');
+    const li = document.createElement('h5');
     li.innerText = symptom;
     selectedSymptomsList.appendChild(li);
     
     if (symptom === "s1"){
-        const info = document.createElement('h5');
+        const info = document.createElement('h6');
         info.innerText = "This is what symptom 1 implies";
         selectedSymptomsList.appendChild(info);
     }
     
     if (symptom === "s2"){
-        const info = document.createElement('h5');
+        const info = document.createElement('h6');
         info.innerText = "This is what symptom 2 implies";
         selectedSymptomsList.appendChild(info);
     }

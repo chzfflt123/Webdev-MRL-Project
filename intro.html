@@ -48,14 +48,83 @@
     </nav>
 
     <div class = "container">
+        <h5>New Diagnosis.</h5>
+        <h5>Add patient</h5>
+
+        <div class="section" id="add">
+            <form id="addForm">
+                <div class="row">
+                    <div class="input-field col s5">
+                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                        <label for="titleInput">Patient First Name</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                        <label for="titleInput">Patient Middle Initial</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s5">
+                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                        <label for="titleInput">Patient Last Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s2">
+                        <input type="number" id="priorityInput" name="age" class="validate" min=0 max=120 value=1>
+                        <label for="priorityInput">Age</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <select type="number" id="subjectInput" name="subject" id="subjectInput">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value=1>Male</option>
+                            <option value=2>Female</option>
+                            <option value=3>Non-Binary</option>
+                          </select>
+                          <label for="subjectInput">Gender</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input type="number" id="priorityInput" name="weight" class="validate" min=0 max=120 value=1>
+                        <label for="priorityInput">Weight(kg)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input type="number" id="priorityInput" name="height" class="validate" min=0 max=120 value=1>
+                        <label for="priorityInput">Height(cm)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="date" id="dueDateInput" name="DOB" id="dueDateInput">
+                        <label for="dueDateInput">DOB</label>
+                    </div>
+                </div>
+
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">
+                    <i class="material-icons right">send</i>
+                    Submit
+                </button>
+            </form>
+        </div>
+
         <br>
-        <a class = "waves-effect waves-light btn-large orange modal-trigger" href="symptoms.html">
-            <i class="material-icons right">chevron_right</i>Start Diagnosis
-        </a>
         <br>
-        <a class = "waves-effect waves-light btn-large orange modal-trigger" href="confirmsymptoms.html">
-            <i class="material-icons right">chevron_right</i>Confirm????? (IDK WHat's going onn) Diagnosis
-        </a>
+        <div class="container">
+            <p1>This button is just for the sole purpose of skipping to the next page without entering a value for each line.</p1>
+            <br>
+            <a class = "waves-effect waves-light btn-large orange modal-trigger" href="symptoms.html">
+                <i class="material-icons right">chevron_right</i>Start Diagnosis
+            </a>
+        </div>
+        <br>
+        <br>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
