@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <title>Document</title>
+
+
 </head>
 <body>
+    
 
     <nav class="teal darken-1">
         <div class="nav-wrapper">
@@ -45,28 +47,37 @@
             </ul>
         </div>
     </nav>
-    
-    <h1>Selected Symptoms:</h1>
-    <ul id="selected-symptoms"></ul>
 
-    <a class = "waves-effect waves-light btn-large orange modal-trigger" href="results.html">
-        <i class="material-icons right">chevron_right</i>Continue
-    </a>
-
-    <script>
-        // Retrieve the selectedSymptoms array from localStorage
+    <div class = "container">
+        <h1>Based on reuslts your symptoms showed...</h1>
+        <ul id="selected-symptoms"></ul>
+        <h1>What does this mean?</h1>
+        <h4>Will give list of possible diseases- need to create database first to fetch that information and run algorithm</h2>
+    </div>
+<script>
         const selectedSymptoms = JSON.parse(localStorage.getItem('selectedSymptoms'));
 
-        // Display the selected symptoms in an unordered list
-        const selectedSymptomsList = document.getElementById('selected-symptoms');
-        selectedSymptoms.forEach(symptom => {
-            const li = document.createElement('h4');
-            li.innerText = symptom;
-            selectedSymptomsList.appendChild(li);
-        });
+const selectedSymptomsList = document.getElementById('selected-symptoms');
+selectedSymptoms.forEach(symptom => {
+    const li = document.createElement('h4');
+    li.innerText = symptom;
+    selectedSymptomsList.appendChild(li);
+    
+    if (symptom === "s1"){
+        const info = document.createElement('h5');
+        info.innerText = "This is what symptom 1 implies";
+        selectedSymptomsList.appendChild(info);
+    }
+    
+    if (symptom === "s2"){
+        const info = document.createElement('h5');
+        info.innerText = "This is what symptom 2 implies";
+        selectedSymptomsList.appendChild(info);
+    }
+});
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
+
 </body>
 </html>
-
