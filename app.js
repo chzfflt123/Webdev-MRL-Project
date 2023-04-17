@@ -5,7 +5,7 @@ const port = 3000;
 
 // define a route for the default home page
 app.get("/", (req, res) => {
-    res.send("<h1>Home Page</h1>");
+    res.sendFile(__dirname+"/index.html");
 });
 
 // start the server
