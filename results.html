@@ -50,10 +50,35 @@
 
     <div class = "container">
         <h4>Based on reuslts your symptoms showed...</h4>
+        <ul id="selected-risks"></ul>
         <ul id="selected-symptoms"></ul>
         <h4>What does this mean?</h4>
         <h6>Will give list of possible diseases- need to create database first to fetch that information and run algorithm</h6>
     </div>
+
+<script>
+        const selectedRisks = JSON.parse(localStorage.getItem('selectedRisks'));
+
+const selectedRisksList = document.getElementById('selected-risks');
+selectedRisks.forEach(risk => {
+    const li = document.createElement('h5');
+    li.innerText = risk;
+    selectedRisksList.appendChild(li);
+    
+    if (risk === "r1"){
+        const info = document.createElement('h6');
+        info.innerText = "This is what risk 1 implies";
+        selectedRisksList.appendChild(info);
+    }
+    
+    if (risk === "r2"){
+        const info = document.createElement('h6');
+        info.innerText = "This is what risk 2 implies";
+        selectedRisksList.appendChild(info);
+    }
+});
+</script>
+
 <script>
         const selectedSymptoms = JSON.parse(localStorage.getItem('selectedSymptoms'));
 
@@ -76,7 +101,7 @@ selectedSymptoms.forEach(symptom => {
     }
 });
 
-    </script>
+</script>
     
     <div class = "container">
         <br>
