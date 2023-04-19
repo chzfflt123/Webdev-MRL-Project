@@ -32,7 +32,7 @@ app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
 });
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms",(req,res)=>{
-    res.sendFile(__dirname+"/contirmsymptoms.html");
+    res.sendFile(__dirname+"/confirmsymptoms.html");
 });
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
