@@ -7,19 +7,22 @@ const port = 3000;
 app.get("/", (req, res) => {
     res.sendFile(__dirname+"/index.html");
 });
+app.get("/abstract",(req,res)=>{
+    res.sendFile(__dirname+"/abstract.html");
+});
 
-// start the server
-app.listen(port, () => {
-    console.log(`App server listening on ${port}`);
-})
+// // start the server
+// app.listen(port, () => {
+//     console.log(`App server listening on ${port}`);
+// })
 
-// define a route for the assignment list page 
-app.get("/assignments",(req,res)=>{
-    res.send("<h1>This is the assignments page</h1>");
-})
+// // define a route for the assignment list page 
+// app.get("/assignments",(req,res)=>{
+//     res.send("<h1>This is the assignments page</h1>");
+// })
 
-// define a route for the assignment detail page 
-app.get("/assignments/details",(req,res)=>{
-    res.send("<h1>This is the assignment detail page</h1>");
-})
+// // define a route for the assignment detail page 
+// app.get("/assignments/details",(req,res)=>{
+//     res.send("<h1>This is the assignment detail page</h1>");
+// })
 
