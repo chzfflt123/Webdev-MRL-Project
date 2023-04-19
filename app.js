@@ -15,6 +15,10 @@ app.get("/credits",(req,res)=>{
     res.sendFile(__dirname+"/credits.html");
 });
 
+app.get("/ourteam",(req,res)=>{
+    res.sendFile(__dirname+"/ourteam.html");
+});
+
 app.get("/intro",(req,res)=>{
     res.sendFile(__dirname+"/intro.html");
 });
@@ -46,6 +50,7 @@ app.get("/database",(req,res)=>{
 app.get("/database/details",(req,res)=>{
     res.sendFile(__dirname+"/details.html");
 });
+
 
 
 // start the server
