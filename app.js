@@ -39,10 +39,13 @@ app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(re
     res.sendFile(__dirname+"/results.html");
 });
 
+app.get("/database",(req,res)=>{
+    res.sendFile(__dirname+"/database.html");
+});
 
-
-
-
+app.get("/database/details",(req,res)=>{
+    res.sendFile(__dirname+"/details.html");
+});
 
 
 // start the server
