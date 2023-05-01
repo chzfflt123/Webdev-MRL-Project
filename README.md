@@ -19,3 +19,7 @@ Database:
 - information = modal
 - info/Edit = details.html
 - delete = modal
+
+
+** Fix stylesheet
+** Fix photo
