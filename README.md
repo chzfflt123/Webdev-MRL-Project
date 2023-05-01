@@ -22,4 +22,3 @@ Database:
 
 
 ** Fix stylesheet
-** Fix photo
