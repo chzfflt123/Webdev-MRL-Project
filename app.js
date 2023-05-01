@@ -1,7 +1,18 @@
 // set up the server
 const express = require("express");
+const logger = require("morgan");
 const app = express()
-const port = 3000;
+const port = 3030;
+
+
+app.use(logger("dev"));
+app.use(express.static(__dirname+'/public'));
+
+// start the server
+app.listen(port, () => {
+    console.log(`App server listening on ${port}`);
+})
+
 
 // define a route for the default home page
 app.get("/", (req, res) => {
@@ -50,10 +61,3 @@ app.get("/database",(req,res)=>{
 app.get("/database/details",(req,res)=>{
     res.sendFile(__dirname+"/views/details.html");
 });
-
-
-
-// start the server
-app.listen(port, () => {
-    console.log(`App server listening on ${port}`);
-})
