@@ -61,3 +61,6 @@ app.get("/database",(req,res)=>{
 app.get("/database/details",(req,res)=>{
     res.sendFile(__dirname+"/views/details.html");
 });
+
+
+// hi
