@@ -5,7 +5,7 @@ Anna Ekmekci & Dyanne Lee
 //todo:
 figure out how to unbold the header in details.html
 
-Home: index.html
+Home: homepage.html
 - abstract = abstract.html
 - credits = credits.html
 New Diagnosis:
