@@ -2,17 +2,6 @@ const mysql = require('mysql2')
 const dotenv = require('dotenv')
 dotenv.config()
 
-//node db/db_test.js
-
-// const dbConfig = {
-//     host: "<hostname>",
-//     port: 3306,
-//     user: "<username>",
-//     password: "<password>",
-//     database: "<schema>",
-//     connectionTimeout: 10000
-// }
-
 const dbConfig = {
     host: process.env.DB_HOST || "localhost",
     port: parseInt(process.env.DB_PORT || "3306"),
