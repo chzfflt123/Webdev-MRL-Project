@@ -16,6 +16,6 @@ const insert_patient_sql = `
         (?, ?, ?, ?, ?);
 `
 
-db.execute(insert_patient_sql, [1, 14, 05-19-2008, "4", "100"]);
+db.execute(insert_patient_sql, [1, 14, "2008-05-19", "4", "100"]);
 
 db.end();
