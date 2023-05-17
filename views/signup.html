@@ -51,19 +51,38 @@ Disease Detector
                         </div>
                         <div class = "row">
                             <div class="input-field col s12">
-                                <input id="password" type="password" class="validate">
+                                <input ontab = "enteredInfo()" id="password" type="password" class="validate">
                                 <label for="password">Password</label>
                                 <script>
-                                    const password = JSON.parse(localStorage, getItem(''))
+                                    function enteredInfo() {
+                                        let data = "";
+                                        data += password;
+                                        localStorage.setItem('passwordData', JSON.strinify(data));
+                                        window.location = '/signup'
+                                    }
                                 </script>
                             </div>
                         </div>
                         <div class = "row">
                             <div class="input-field col s12">
-                                <input id="confirm password" type="password" class="validate">
+                                <input ontab = "enteredInfor()" id="confirm password" type="password" class="validate">
                                 <label for="confirm password">Confirm password</label>
                                 <script>
-                                    const password = JSON.parse(localStorage, getItem(''))
+                                    function enteredInfo() {
+                                        let data = "";
+                                        data += password;
+                                        localStorage.setItem('confirmedPassword', JSON.strinify(data));
+                                        window.location = '/signup'
+                                    }
+                                    const password = JSON.parse(localStorage.getItem('passwordData'));
+                                    const confirmPassword = JSON.parse(localStorage.getItem('passwordData'));
+                                    if (password == confirmPassword) {
+                                        const li = document.createElement('h5');
+                                        li.innerText = "good";
+                                    }
+                                </script>
+                                    const password = JSON.parse(localStorage, getItem(''));
+
                                 </script>
                             </div>
                         </div>
