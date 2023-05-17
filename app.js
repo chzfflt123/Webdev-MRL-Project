@@ -63,6 +63,15 @@ app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
 });
 
 app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
+    const sql = 'SELECT * FROM symptoms';
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'error' });
+      }
+      res.json(results);
+      console.log(results);
+    });
     res.sendFile(__dirname+"/views/symptoms.html");
 });
 
