@@ -8,6 +8,4 @@ config.query(sql, (error, results, fields) => {
   console.log(results);
 });
 
-localStorage.setItem('symptoms', JSON.stringify(results));
-
 config.end(); 

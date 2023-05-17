@@ -5,6 +5,10 @@ const app = express()
 const port = 3031;
 
 
+const db = require("./db/db_connection");
+
+
+
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
 
@@ -13,9 +17,10 @@ app.get('/symptoms', (req, res) => {
     db.query(sql, (error, results) => {
       if (error) {
         console.error(error.message);
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).JSON({ error: 'error' });
       }
-      res.json(results);
+      res.JSON(results);
+      console.log(results);
     });
   });
 
