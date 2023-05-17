@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +9,86 @@
     <link rel="stylesheet" href="/public/stylesheets/stylesheet1.css">
     <title>Disease Detector</title>
 </head>
-<body onLoad="data();">
-
+<body>
     <nav class="teal darken-1">
-        <!-- Navigation content -->
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons left">local_hospital</i>
+                Disease Detector
+            </a>
+            <a href ="/" class = "sidenav-trigger">
+                <i class = "material-icons">local_hospital</i>
+            </a>
+            <!-- a is for hyperlink -->
+            <!-- ul for unordered list -->
+            <!-- li for list items -->
+            <ul class="right">
+                <li>
+                    <a href="/">
+                        <i class="material-icons left">home</i>
+                        Home
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/intro">
+                        <i class="material-icons left">person_add</i>
+                        New Diagnosis
+                    </a>
+                </li>
+                <li>
+                    <a href="/database">
+                        <i class="material-icons left">people</i>
+                        Database
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
 
     <div class="container">
         <h4>Select Your Symptoms:</h4>
-        <!-- Table content -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Symptom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>
+                            <label>
+                              <input type="checkbox" name="symptom" class="s1" value="sympotm 1 name" id="s1"/>
+                              <span>Symptom 1</span>
+                            </label>
+                          </p>
+                    <td>
+                        <div class="section" id="controls">
+                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td><label>
+                        <p>
+                            <label>
+                              <input type="checkbox" name="symptom" class="s2" value="sympotm 2 name" id="s2"/>
+                              <span>Symptom 2</span>
+                            </label>
+                          </p>
+                    <td>
+                        <div class="section" id="controls">
+                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <br>
-        <button onclick="data()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <button onclick="checkCheckbox()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right"></i>
         </button>
         <div id="feedback"></div>
@@ -32,40 +97,52 @@
         <div id="result"></div>
     </div>
 
-
-<script>
-function data() {
-    let config = require("./db_connection"); 
-
-    let sql = `SELECT * FROM symptoms`;
-    config.query(sql, (error, results, fields) => {
-        if (error) {
-            return console.error(error.message);
-        }
-        console.log(results);
-        addDataToTable(results); // Pass the retrieved data to the addDataToTable function
-    });
-
-    config.end(); 
+<br> <br>  
+<script>  
+function checkCheckbox() {
+    let data = [];
+    if (document.getElementById('s1').checked) {
+        data.push("s1");
+    }
+    if (document.getElementById('s2').checked) {
+        data.push("s2");
+    }
+    localStorage.setItem('symptoms', JSON.stringify(data));
+    window.location = '/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms'
 }
 
-function addDataToTable(data) {
-    let tbody = document.querySelector('tbody');
-    data.forEach((item) => {
-        let newRow = document.createElement('tr');
-        let newCell = document.createElement('td');
+const selectedSymptoms = JSON.parse(localStorage.getItem('symptoms'));
 
-        newCell.textContent = item;
+// Display the selected symptoms in an unordered list
+const selectedSymptomsList = document.getElementById('selected-symptoms');
+selectedSymptoms.forEach(symptom => {
+    const li = document.createElement('h5');
+    li.innerText = symptom;
+    selectedSymptomsList.appendChild(li);
+});
 
-        newRow.appendChild(newCell);
-        tbody.appendChild(newRow);
-    });
-}
+</script>  
 
+    <div id="edit" class="modal">
+        <div class = "container">
+            <h1>Symptom</h1>
+            <div class="modal-content">
+                <h4>Information</h4>
+                <p>A bunch of text</p>
+                <h4>What this can imply</h4>
+                <p>A bunch of text</p>
+                <h4>How to treat</h4>
+                <p>A bunch of text</p>
+            </div>
+        </div>
+    </div>
+    
+    
 
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>M.AutoInit();</script>
 
 </body>
 </html>
 
-
+<!-- hi -->
