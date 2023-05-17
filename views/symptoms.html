@@ -45,6 +45,19 @@
         </div>
     </nav>
 
+    <div class="container">
+        <h4>Select Your Symptoms:</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Symptom</th>
+            </tr>
+          </thead>
+          <tbody id="symptomsTableBody">
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
 
     <div class="container">
         <h4>Select Your Symptoms:</h4>
@@ -111,15 +124,27 @@ function checkCheckbox() {
     window.location = '/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms'
 }
 
-const selectedSymptoms = JSON.parse(localStorage.getItem('symptoms'));
+function getData() {
+      fetch('/symptoms')
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem('symptoms', JSON.stringify(data));
+          addDataToTable(data);
+        })
+        .catch((error) => console.error(error));
+    }
 
-// Display the selected symptoms in an unordered list
-const selectedSymptomsList = document.getElementById('selected-symptoms');
-selectedSymptoms.forEach(symptom => {
-    const li = document.createElement('h5');
-    li.innerText = symptom;
-    selectedSymptomsList.appendChild(li);
-});
+    function addDataToTable(data) {
+      const tbody = document.getElementById('symptomsTableBody');
+      data.forEach((item) => {
+        const newRow = document.createElement('tr');
+        const newCell = document.createElement('td');
+        newCell.textContent = item.name; // Replace 'name' with the actual property name
+        newRow.appendChild(newCell);
+        tbody.appendChild(newRow);
+      });
+    }
 
 </script>  
 

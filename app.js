@@ -8,6 +8,18 @@ const port = 3031;
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
 
+app.get('/symptoms', (req, res) => {
+    const sql = 'SELECT * FROM symptoms';
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json(results);
+    });
+  });
+
+
 // start the server
 app.listen(port, () => {
     console.log(`App server listening on ${port}`);
@@ -66,4 +78,3 @@ app.get("/database/details",(req,res)=>{
 });
 
 
-// hi
