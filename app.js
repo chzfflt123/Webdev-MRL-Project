@@ -31,6 +31,20 @@ app.listen(port, () => {
 })
 
 
+app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
+    const sql = 'SELECT * FROM symptoms';
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'error' });
+      }
+      res.json(results);
+      console.log(results);
+    });
+    res.sendFile(__dirname+"/views/symptoms.html");
+});
+
+
 // define a route for the default home page
 app.get("/", (req, res) => {
     res.sendFile(__dirname+"/views/index.html");
@@ -62,18 +76,6 @@ app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
     res.sendFile(__dirname+"/views/confirmrisk.html");
 });
 
-app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
-    const sql = 'SELECT * FROM symptoms';
-    db.query(sql, (error, results) => {
-      if (error) {
-        console.error(error.message);
-        return res.status(500).json({ error: 'error' });
-      }
-      res.json(results);
-      console.log(results);
-    });
-    res.sendFile(__dirname+"/views/symptoms.html");
-});
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms",(req,res)=>{
     res.sendFile(__dirname+"/views/confirmsymptoms.html");
