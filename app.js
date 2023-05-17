@@ -18,6 +18,9 @@ app.listen(port, () => {
 app.get("/", (req, res) => {
     res.sendFile(__dirname+"/views/index.html");
 });
+app.get("/signup", (req, res) => {
+    res.sendFile(__dirname+"/views/signup.html");
+});
 app.get("/abstract",(req,res)=>{
     res.sendFile(__dirname+"/views/abstract.html");
 });
