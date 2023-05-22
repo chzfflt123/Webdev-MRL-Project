@@ -3,8 +3,7 @@ const express = require("express");
 const logger = require("morgan");
 const app = express()
 const port = 3031;
-
-
+const DEBUG = true;
 const db = require("./db/db_connection");
 
 
@@ -12,16 +11,31 @@ const db = require("./db/db_connection");
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
 
+const query_select_syptom = `SELECT * FROM symptoms`;
+
 app.get('/symptoms', (req, res) => {
-    const sql = 'SELECT * FROM symptoms';
-    db.query(sql, (error, results) => {
-      if (error) {
-        console.error(error.message);
-        return res.status(500).JSON({ error: 'error' });
-      }
-      res.JSON(results);
-      console.log(results);
+    db.execute(query_select_symptom, (error, results) => {
+        if(DEBUG){
+            console.log(error ? error : results);
+        }
+        if(error){
+            res.status(500).send(error);
+        }
+        else {
+            res.send(result);
+        }
     });
+}
+
+    // const sql = 'SELECT * FROM symptoms';
+    // db.query(sql, (error, results) => {
+    //   if (error) {
+    //     console.error(error.message);
+    //     return res.status(500).JSON({ error: 'error' });
+    //   }
+    //   res.JSON(results);
+    //   console.log(results);
+    // });
   });
 
 
