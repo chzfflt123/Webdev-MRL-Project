@@ -36,7 +36,7 @@ app.get('/symptoms', (req, res) => {
     //   res.JSON(results);
     //   console.log(results);
     // });
-  });
+  );
 
 
 // start the server
