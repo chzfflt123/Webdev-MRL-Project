@@ -3,9 +3,7 @@ const express = require("express");
 const logger = require("morgan");
 const app = express()
 const port = 3031;
-
-
-
+const DEBUG = true;
 const db = require("./db/db_connection");
 
 
@@ -13,23 +11,52 @@ const db = require("./db/db_connection");
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
 
+const query_select_syptom = `SELECT * FROM symptoms`;
+
 app.get('/symptoms', (req, res) => {
-    const sql = 'SELECT * FROM symptoms';
-    db.query(sql, (error, results) => {
-      if (error) {
-        console.error(error.message);
-        return res.status(500).JSON({ error: 'error' });
-      }
-      res.JSON(results);
-      console.log(results);
+    db.execute(query_select_symptom, (error, results) => {
+        if(DEBUG){
+            console.log(error ? error : results);
+        }
+        if(error){
+            res.status(500).send(error);
+        }
+        else {
+            res.send(result);
+        }
     });
-  });
+}
+
+    // const sql = 'SELECT * FROM symptoms';
+    // db.query(sql, (error, results) => {
+    //   if (error) {
+    //     console.error(error.message);
+    //     return res.status(500).JSON({ error: 'error' });
+    //   }
+    //   res.JSON(results);
+    //   console.log(results);
+    // });
+  );
 
 
 // start the server
 app.listen(port, () => {
     console.log(`App server listening on ${port}`);
 })
+
+
+app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
+    const sql = 'SELECT * FROM symptoms';
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'error' });
+      }
+      res.json(results);
+      console.log(results);
+    });
+    res.sendFile(__dirname+"/views/symptoms.html");
+});
 
 
 // define a route for the default home page
@@ -63,18 +90,6 @@ app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
     res.sendFile(__dirname+"/views/confirmrisk.html");
 });
 
-app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
-    const sql = 'SELECT * FROM symptoms';
-    db.query(sql, (error, results) => {
-      if (error) {
-        console.error(error.message);
-        return res.status(500).json({ error: 'error' });
-      }
-      res.json(results);
-      console.log(results);
-    });
-    res.sendFile(__dirname+"/views/symptoms.html");
-});
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms",(req,res)=>{
     res.sendFile(__dirname+"/views/confirmsymptoms.html");
