@@ -1,3 +1,7 @@
+//npx nodemon -e js,ejs,sql,env app.js
+//npm run start
+//npm run devstart
+
 // set up the server
 const express = require("express");
 const logger = require("morgan");
