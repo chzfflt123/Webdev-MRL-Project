@@ -7,4 +7,4 @@ const insert_symptom_sql = `
         (?, ?);
 `
 
-db.execute(insert_symptom_sql, ['1657849302', 'Comp Sci']);
+db.execute(insert_symptom_sql, [123456789, 'Comp Sci']);
