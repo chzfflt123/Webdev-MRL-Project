@@ -19,28 +19,17 @@ const query_select_syptom = `SELECT * FROM symptoms`;
 
 app.get('/symptoms', (req, res) => {
     db.execute(query_select_symptom, (error, results) => {
-        if(DEBUG){
+        if(DEBUG)
             console.log(error ? error : results);
-        }
-        if(error){
+        
+        if(error)
             res.status(500).send(error);
-        }
-        else {
-            res.send(result);
-        }
+        else if (results.length == 0)
+            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND
+        else
+            res.send(results[0]);
     });
-}
-
-    // const sql = 'SELECT * FROM symptoms';
-    // db.query(sql, (error, results) => {
-    //   if (error) {
-    //     console.error(error.message);
-    //     return res.status(500).JSON({ error: 'error' });
-    //   }
-    //   res.JSON(results);
-    //   console.log(results);
-    // });
-  );
+});
 
 
 // start the server
@@ -48,18 +37,19 @@ app.listen(port, () => {
     console.log(`App server listening on ${port}`);
 })
 
-
+const read_symptoms_all_sql = 'SELECT * FROM symptoms';
 app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
-    const sql = 'SELECT * FROM symptoms';
-    db.query(sql, (error, results) => {
-      if (error) {
-        console.error(error.message);
-        return res.status(500).json({ error: 'error' });
-      }
-      res.json(results);
-      console.log(results);
+    
+    db.execute(read_symptoms_all_sql, (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else if (results.length == 0)
+            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND    
+        else
+            res.send(results);
     });
-    res.sendFile(__dirname+"/views/symptoms.html");
 });
 
 
@@ -107,8 +97,22 @@ app.get("/database",(req,res)=>{
     res.sendFile(__dirname+"/views/database.html");
 });
 
-app.get("/database/details",(req,res)=>{
-    res.sendFile(__dirname+"/views/details.html");
+
+const database_detail_sql = `
+    SELECT * from patient
+`
+
+app.get("/database/:id",(req,res,next)=>{
+    db.execute(database_detail_sql, [res.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error)
+        else if (results.length == 0)
+            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND
+        else   
+            res.send(results[0]);
+    })
 });
 
 
