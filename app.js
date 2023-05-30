@@ -47,30 +47,30 @@ app.get("/", (req, res) => {
     res.render('index');
 });
 app.get("/signup", (req, res) => {
-    res.sendFile(__dirname+"/views/signup.ejs");
+    res.sendFile("signup");
 });
 app.get("/abstract",(req,res)=>{
-    res.sendFile(__dirname+"/views/abstract.ejs");
+    res.sendFile("abstract");
 });
 
 app.get("/credits",(req,res)=>{
-    res.sendFile(__dirname+"/views/credits.ejs");
+    res.sendFile("credits");
 });
 
 app.get("/ourteam",(req,res)=>{
-    res.sendFile(__dirname+"/views/ourteam.ejs");
+    res.sendFile("ourteam");
 });
 
 app.get("/intro",(req,res)=>{
-    res.sendFile(__dirname+"/views/intro.ejs");
+    res.sendFile("intro");
 });
 
 app.get("/intro/riskconditions",(req,res)=>{
-    res.sendFile(__dirname+"/views/riskconditions.ejs");
+    res.sendFile("riskconditions");
 });
 
 app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
-    res.sendFile(__dirname+"/views/confirmrisk.ejs");
+    res.sendFile("confirmrisk");
 });
 
 
@@ -80,11 +80,11 @@ app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms", (req, res)
 
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
-    res.sendFile(__dirname+"/views/results.ejs");
+    res.sendFile("results");
 });
 
 app.get("/database",(req,res)=>{
-    res.sendFile(__dirname+"/views/database.ejs");
+    res.sendFile("database");
 });
 
 
