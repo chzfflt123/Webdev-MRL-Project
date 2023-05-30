@@ -17,21 +17,6 @@ app.set( "view engine", "ejs" );
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
 
-const query_select_symptom = `SELECT * FROM symptoms`;
-
-app.get('/symptoms/:id', (req, res, next) => {
-    db.execute(query_select_symptom, [req.params.id], (error, results) => {
-        if(DEBUG)
-            console.log(error ? error : results);
-        
-        if(error)
-            res.status(500).send(error);
-        else if (results.length == 0)
-            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND
-        else
-            res.send(results[0]);
-    });
-});
 
 
 // start the server
@@ -39,25 +24,27 @@ app.listen(port, () => {
     console.log(`App server listening on ${port}`);
 })
 
-const read_symptoms_all_sql = 'SELECT * FROM symptoms';
-app.get("/intro/riskconditions/confirmrisk/symptoms",(req,res)=>{
-    
-    db.execute(read_symptoms_all_sql, (error, results) => {
+const query_select_symptom = `SELECT * FROM symptoms`;
+
+app.get('/intro/riskconditions/confirmrisk/symptoms/:id', (req, res, next) => {
+    db.query(query_select_symptom, (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
+
         if (error)
-            res.status(500).send(error); //Internal Server Error
+            res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND    
-        else
-            res.send(results);
+            res.status(404).send(`No symptom found with id = "${req.params.id}"`);
+        else {
+            let data = { symptoms: results }; // Pass all the symptoms as an array
+            res.render('symptoms', data);
+        }
     });
 });
 
-
 // define a route for the default home page
 app.get("/", (req, res) => {
-    res.sendFile(__dirname+"/views/index.html");
+    res.render('index');
 });
 app.get("/signup", (req, res) => {
     res.sendFile(__dirname+"/views/signup.html");
