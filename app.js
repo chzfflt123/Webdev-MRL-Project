@@ -47,30 +47,45 @@ app.get("/", (req, res) => {
     res.render('index');
 });
 app.get("/signup", (req, res) => {
-    res.sendFile("signup");
+    res.render("signup");
 });
 app.get("/abstract",(req,res)=>{
-    res.sendFile("abstract");
+    res.render("abstract");
 });
 
 app.get("/credits",(req,res)=>{
-    res.sendFile("credits");
+    res.render("credits");
 });
 
 app.get("/ourteam",(req,res)=>{
-    res.sendFile("ourteam");
+    res.render("ourteam");
 });
 
 app.get("/intro",(req,res)=>{
-    res.sendFile("intro");
+    res.render("intro");
 });
 
-app.get("/intro/riskconditions",(req,res)=>{
-    res.sendFile("riskconditions");
+const query_select_riskfactors = `SELECT * FROM risk_factors`;
+
+app.get('/intro/riskconditions', (req, res, next) => {
+    db.query(query_select_riskfactors, (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+
+        if (error)
+            res.status(500).send(error);
+        else if (results.length == 0)
+            res.status(404).send(`No risk factor found with id = "${1}"`);
+        else {
+            let data = { risk_factor: results }; 
+            res.render('riskconditions', data);
+        }
+    });
 });
+
 
 app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
-    res.sendFile("confirmrisk");
+    res.render("confirmrisk");
 });
 
 
@@ -80,11 +95,11 @@ app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms", (req, res)
 
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
-    res.sendFile("results");
+    res.render("results");
 });
 
 app.get("/database",(req,res)=>{
-    res.sendFile("database");
+    res.render("database");
 });
 
 
