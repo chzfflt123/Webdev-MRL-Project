@@ -1,3 +1,5 @@
+<!-- symptoms.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +56,12 @@
           <tbody id="symptomsTableBody">
             <% symptoms.forEach((symptom) => { %>
               <tr>
-                <td><%= symptom.name %></td>
+                <td>
+                  <label>
+                    <input type="checkbox" class="filled-in" name="symptom" value="<%= symptom.name %>">
+                    <span><%= symptom.name %></span>
+                  </label>
+                </td>
               </tr>
             <% }) %>
           </tbody>
@@ -94,7 +101,7 @@
         checkboxes.forEach((checkbox) => {
           data.push(checkbox.value);
         });
-        localStorage.setItem('symptoms', JSON.stringify(data));
+        localStorage.setItem('selectedSymptoms', JSON.stringify(data));
         window.location = '/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms';
       }
 
@@ -114,14 +121,12 @@
         data.forEach((item) => {
           const newRow = document.createElement('tr');
           const newCell = document.createElement('td');
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.name = 'symptom';
-          checkbox.value = item.name;
+          const checkbox = document.createElement('label');
+          checkbox.innerHTML = `
+            <input type="checkbox" class="filled-in" name="symptom" value="${item.name}">
+            <span>${item.name}</span>
+          `;
           newCell.appendChild(checkbox);
-          const label = document.createElement('label');
-          label.textContent = item.name;
-          newCell.appendChild(label);
           newRow.appendChild(newCell);
           tbody.appendChild(newRow);
         });

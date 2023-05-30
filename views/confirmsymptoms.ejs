@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <title>Disease Detector</title>
 </head>
 <body>
-
     <nav class="teal darken-1">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo">
@@ -20,9 +20,6 @@
             <a href ="/" class = "sidenav-trigger">
                 <i class = "material-icons">local_hospital</i>
             </a>
-            <!-- a is for hyperlink -->
-            <!-- ul for unordered list -->
-            <!-- li for list items -->
             <ul class="right">
                 <li>
                     <a href="/">
@@ -64,8 +61,8 @@
         // Display the selected symptoms in an unordered list
         const selectedSymptomsList = document.getElementById('selected-symptoms');
         selectedSymptoms.forEach(symptom => {
-            const li = document.createElement('h5');
-            li.innerText = symptom;
+            const li = document.createElement('li');
+            li.textContent = symptom;
             selectedSymptomsList.appendChild(li);
         });
     </script>
@@ -73,6 +70,3 @@
     <script>M.AutoInit();</script>
 </body>
 </html>
-
-
-<!-- hi -->

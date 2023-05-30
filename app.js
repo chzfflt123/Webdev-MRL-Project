@@ -26,7 +26,7 @@ app.listen(port, () => {
 
 const query_select_symptom = `SELECT * FROM symptoms`;
 
-app.get('/intro/riskconditions/confirmrisk/symptoms/:id', (req, res, next) => {
+app.get('/intro/riskconditions/confirmrisk/symptoms', (req, res, next) => {
     db.query(query_select_symptom, (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
@@ -34,7 +34,7 @@ app.get('/intro/riskconditions/confirmrisk/symptoms/:id', (req, res, next) => {
         if (error)
             res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No symptom found with id = "${req.params.id}"`);
+            res.status(404).send(`No symptom found with id = "${1}"`);
         else {
             let data = { symptoms: results }; // Pass all the symptoms as an array
             res.render('symptoms', data);
@@ -47,43 +47,43 @@ app.get("/", (req, res) => {
     res.render('index');
 });
 app.get("/signup", (req, res) => {
-    res.sendFile(__dirname+"/views/signup.html");
+    res.sendFile(__dirname+"/views/signup.ejs");
 });
 app.get("/abstract",(req,res)=>{
-    res.sendFile(__dirname+"/views/abstract.html");
+    res.sendFile(__dirname+"/views/abstract.ejs");
 });
 
 app.get("/credits",(req,res)=>{
-    res.sendFile(__dirname+"/views/credits.html");
+    res.sendFile(__dirname+"/views/credits.ejs");
 });
 
 app.get("/ourteam",(req,res)=>{
-    res.sendFile(__dirname+"/views/ourteam.html");
+    res.sendFile(__dirname+"/views/ourteam.ejs");
 });
 
 app.get("/intro",(req,res)=>{
-    res.sendFile(__dirname+"/views/intro.html");
+    res.sendFile(__dirname+"/views/intro.ejs");
 });
 
 app.get("/intro/riskconditions",(req,res)=>{
-    res.sendFile(__dirname+"/views/riskconditions.html");
+    res.sendFile(__dirname+"/views/riskconditions.ejs");
 });
 
 app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
-    res.sendFile(__dirname+"/views/confirmrisk.html");
+    res.sendFile(__dirname+"/views/confirmrisk.ejs");
 });
 
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms",(req,res)=>{
-    res.sendFile(__dirname+"/views/confirmsymptoms.html");
+    res.sendFile(__dirname+"/views/confirmsymptoms.ejs");
 });
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
-    res.sendFile(__dirname+"/views/results.html");
+    res.sendFile(__dirname+"/views/results.ejs");
 });
 
 app.get("/database",(req,res)=>{
-    res.sendFile(__dirname+"/views/database.html");
+    res.sendFile(__dirname+"/views/database.ejs");
 });
 
 
