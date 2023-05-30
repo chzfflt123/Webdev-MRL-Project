@@ -74,9 +74,10 @@ app.get("/intro/riskconditions/confirmrisk",(req,res)=>{
 });
 
 
-app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms",(req,res)=>{
-    res.sendFile(__dirname+"/views/confirmsymptoms.ejs");
+app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms", (req, res) => {
+    res.render("confirmsymptoms");
 });
+
 
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
     res.sendFile(__dirname+"/views/results.ejs");
