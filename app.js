@@ -94,6 +94,24 @@ app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms", (req, res)
 });
 
 
+const diagnosis_query = ``;
+
+app.get('/intro/riskconditions', (req, res, next) => {
+    db.query(query_final_algorithm, (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+
+        if (error)
+            res.status(500).send(error);
+        else if (results.length == 0)
+            res.status(404).send(`No risk factor found with id = "${1}"`);
+        else {
+            let data = { risk_factor: results }; 
+            res.render('riskconditions', data);
+        }
+    });
+});
+
 app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(req,res)=>{
     res.render("results");
 });

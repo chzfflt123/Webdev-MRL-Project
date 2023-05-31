@@ -42,7 +42,7 @@ Disease Detector
             <div class="col s4 offset-s4">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <span class="card-title center">Login</span>
+                        <span class="card-title center">Sign Up</span>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="first_name" type="text" class="validate">
@@ -81,8 +81,7 @@ Disease Detector
                                         li.innerText = "good";
                                     }
                                 </script>
-                                    const password = JSON.parse(localStorage, getItem(''));
-
+                                    
                                 </script>
                             </div>
                         </div>
@@ -93,13 +92,9 @@ Disease Detector
                                 <span class="helper-text" data-error="wrong" data-success="right"></span>
                             </div>
                         </div>
-                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/intro">
-                            <i class="material-icons right">chevron_right</i>Login
+                        <a onclick="addDataToDatabase()" class="waves-effect waves-light btn-small orange modal-trigger" href="/intro">
+                            <i onclick="addDataToDatabase()" class="material-icons right">chevron_right</i>Sign Up
                         </a>
-                        <!-- SLASH SIGNUP NECESSARY -->
-                        <div class = "row">
-                            <a href = "signup.html">Sign up</a>
-                        </div>
                 </div>
                     <div class="card-action">
                         <a href="/abstract">Abstract</a>
@@ -113,6 +108,20 @@ Disease Detector
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
+    <script>
+        function addDataToDatabase() {
+            const db = require("./db_connection");
+            const insert_login_sql = `
+                INSERT INTO login 
+                    (doctor_id, user_name, password, phoneNumber, first_name, last_name, middle_name) 
+                VALUES 
+                    (?, ?, ?, ?, ?, ?, ?);
+            `
+
+            db.execute(insert_login_sql, [1, 1, 1,1,1, 1, 1]);
+        }
+
+    </script>
 
 </body>
 </html>
