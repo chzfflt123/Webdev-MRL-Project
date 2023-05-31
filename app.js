@@ -120,3 +120,7 @@ app.get('/database', (req, res, next) => {
         }
     });
 });
+
+app.get("/database/details",(req,res)=>{
+    res.render("details");
+});
