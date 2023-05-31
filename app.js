@@ -121,6 +121,18 @@ app.get('/database', (req, res, next) => {
     });
 });
 
-app.get("/database/details",(req,res)=>{
-    res.render("details");
+app.get('/database/details', (req, res, next) => {
+    db.query(database_detail_sql, (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+
+        if (error)
+            res.status(500).send(error);
+        else if (results.length == 0)
+            res.status(404).send(`No patient found with id = "${1}"`);
+        else {
+            let data = { patient: results }; 
+            res.render('details', data);
+        }
+    });
 });
