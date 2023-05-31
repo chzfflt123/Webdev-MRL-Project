@@ -98,26 +98,25 @@ app.get("/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results",(re
     res.render("results");
 });
 
-app.get("/database",(req,res)=>{
-    res.render("database");
-});
 
 
 const database_detail_sql = `
     SELECT * from patient
 `
 
-app.get("/database/:id",(req,res,next)=>{
-    db.execute(database_detail_sql, [res.params.id], (error, results) => {
+
+app.get('/database', (req, res, next) => {
+    db.query(database_detail_sql, (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
+
         if (error)
-            res.status(500).send(error)
+            res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND
-        else   
-            res.send(results[0]);
-    })
+            res.status(404).send(`No patient found with id = "${1}"`);
+        else {
+            let data = { patient: results }; 
+            res.render('database', data);
+        }
+    });
 });
-
-
