@@ -34,15 +34,14 @@ app.get('/intro/riskconditions/confirmrisk/symptoms', (req, res, next) => {
         if (error)
             res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No symptom found with id = "${1}"`);
+            res.status(404).send(`No symptoms found]`);
         else {
-            let data = { symptoms: results }; // Pass all the symptoms as an array
+            let data = { symptoms: results }; 
             res.render('symptoms', data);
         }
     });
 });
 
-// define a route for the default home page
 app.get("/", (req, res) => {
     res.render('index');
 });
@@ -75,7 +74,7 @@ app.get('/intro/riskconditions', (req, res, next) => {
         if (error)
             res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No risk factor found with id = "${1}"`);
+            res.status(404).send(`No risk factors found`);
         else {
             let data = { risk_factor: results }; 
             res.render('riskconditions', data);
