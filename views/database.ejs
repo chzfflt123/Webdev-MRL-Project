@@ -142,12 +142,13 @@
                       </label>
                   </td>
                   <td>
-                      <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
-                          <i class="material-icons right">edit</i>Edit
-                      </a>
-                      <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
-                          <i class="material-icons right">delete</i>Delete
-                      </a>
+                    <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
+                      <i class="material-icons right">edit</i>Edit
+                    </a>
+                    <a class="btn-large waves-effect waves-light red right" href="/patients/<%= patient.patient_id %>/delete">
+                        <i class="material-icons right">delete</i>
+                        Delete
+                    </a>
                   </td>
                 </tr>
               <% }) %>

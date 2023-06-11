@@ -103,7 +103,7 @@ app.get('/intro/riskconditions', (req, res, next) => {
         if (error)
             res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No risk factor found with id = "${1}"`);
+            res.status(404).send(`No risk factors found`);
         else {
             let data = { risk_factor: results }; 
             res.render('riskconditions', data);
@@ -150,6 +150,26 @@ app.get('/database/details', (req, res, next) => {
         else {
             let data = { patient: results }; 
             res.render('details', data);
+        }
+    });
+});
+
+
+const delete_patient_sql = `
+    DELETE 
+    FROM
+        patient
+    WHERE
+        patient_id = 1
+`
+app.get("/patients/:id/delete", ( req, res ) => {
+    db.execute(delete_patient_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/database");
         }
     });
 });
