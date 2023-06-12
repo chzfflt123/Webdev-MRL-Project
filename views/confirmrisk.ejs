@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <title>Disease Detector</title>
 </head>
 <body>
-
     <nav class="teal darken-1">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo">
@@ -20,9 +20,6 @@
             <a href ="/" class = "sidenav-trigger">
                 <i class = "material-icons">local_hospital</i>
             </a>
-            <!-- a is for hyperlink -->
-            <!-- ul for unordered list -->
-            <!-- li for list items -->
             <ul class="right">
                 <li>
                     <a href="/">
@@ -46,33 +43,28 @@
         </div>
     </nav>
     <div class="container">
-        <h4>Selected Symptoms:</h4>
-        <ul id="selected-symptoms"></ul>
+        <h4>Selected Risks:</h4>
+        <ul id="selectedrisk_factor"></ul>
         
-        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/intro/riskconditions/confirmrisk/symptoms">
+        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/intro/riskconditions">
             <i class="material-icons right">chevron_left</i>Return
         </a>
-        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/intro/riskconditions/confirmrisk/symptoms/confirmsymptoms/results">
+        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/intro/riskconditions/confirmrisk/symptoms">
             <i class="material-icons right">chevron_right</i>Continue
         </a>
     </div>
 
     <script>
-        // Retrieve the selectedSymptoms array from localStorage
-        const selectedSymptoms = JSON.parse(localStorage.getItem('selectedSymptoms'));
+        const selectedFactors = JSON.parse(localStorage.getItem('selectedrisk_factor'));
 
-        // Display the selected symptoms in an unordered list
-        const selectedSymptomsList = document.getElementById('selected-symptoms');
-        selectedSymptoms.forEach(symptom => {
-            const li = document.createElement('h5');
-            li.innerText = symptom;
-            selectedSymptomsList.appendChild(li);
+        const selectedFactorsList = document.getElementById('selectedrisk_factor');
+        selectedFactors.forEach(risk_factor => {
+            const li = document.createElement('li');
+            li.textContent = risk_factor;
+            selectedFactorsList.appendChild(li);
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
 </body>
 </html>
-
-
-<!-- hi -->

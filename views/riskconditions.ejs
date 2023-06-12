@@ -1,3 +1,5 @@
+<!-- symptoms.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +21,6 @@
             <a href ="/" class = "sidenav-trigger">
                 <i class = "material-icons">local_hospital</i>
             </a>
-            <!-- a is for hyperlink -->
-            <!-- ul for unordered list -->
-            <!-- li for list items -->
             <ul class="right">
                 <li>
                     <a href="/">
@@ -45,79 +44,42 @@
         </div>
     </nav>
 
+    <div class="container">
+        <h4>Select Patient's Past/Current Risk Factors:</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Risk Factor</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="risk_factorTableBody">
+            <% risk_factor.forEach((risk_factor) => { %>
+              <tr>
+                <td>
+                  <label>
+                    <input type="checkbox" class="filled-in" name="risk_factor" value="<%= risk_factor.name %>">
+                    <span><%= risk_factor.name %></span>
+                  </label>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+    </div>
 
     <div class="container">
-        <h4>Select Patient's (Past/Current) Conditions:</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>Risks</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <p>
-                            <label>
-                              <input type="checkbox" name="risk" class="r1" value="risk 1 name" id="r1"/>
-                              <span>Smoking</span>
-                            </label>
-                          </p>
-                    <td>
-                        <div class="section" id="controls">
-                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td><label>
-                        <p>
-                            <label>
-                              <input type="checkbox" name="risk" class="r2" value="risk 2 name" id="r2"/>
-                              <span>High colestrol levels</span>
-                            </label>
-                          </p>
-                    <td>
-                        <div class="section" id="controls">
-                            <a class="btn-floating btn-small waves-effect waves-light orange modal-trigger" href="#edit"><i class="material-icons left">info</i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
         <br>
         <button onclick="checkCheckbox()" id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right"></i>
         </button>
         <div id="feedback"></div>
-
-
         <div id="result"></div>
     </div>
 
-<br> <br>  
-<script>  
-function checkCheckbox() {
-    let data = [];
-    if (document.getElementById('r1').checked) {
-        data.push("r1");
-    }
-    if (document.getElementById('r2').checked) {
-        data.push("r2");
-    }
-    localStorage.setItem('selectedRisks', JSON.stringify(data));
-    window.location = '/intro/riskconditions/confirmrisk'
-}
-
-    
-
-</script>  
-
     <div id="edit" class="modal">
-        <div class = "container">
-            <h1>Risk (Condition)</h1>
+        <div class="container">
+            <h1>Risk Factor</h1>
             <div class="modal-content">
                 <h4>Information</h4>
                 <p>A bunch of text</p>
@@ -128,13 +90,50 @@ function checkCheckbox() {
             </div>
         </div>
     </div>
-    
-    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>
 
+    <script>
+      function checkCheckbox() {
+        let data = [];
+        const checkboxes = document.querySelectorAll('input[name="risk_factor"]:checked');
+        checkboxes.forEach((checkbox) => {
+          data.push(checkbox.value);
+        });
+        localStorage.setItem('selectedrisk_factor', JSON.stringify(data));
+        window.location = '/intro/riskconditions/confirmrisk';
+      }
+
+      function getData() {
+        fetch('/risk_factor')
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem('risk_factor', JSON.stringify(data));
+            addDataToTable(data);
+          })
+          .catch((error) => console.error(error));
+      }
+
+      function addDataToTable(data) {
+        const tbody = document.getElementById('risk_factorTableBody');
+        data.forEach((item) => {
+          const newRow = document.createElement('tr');
+          const newCell = document.createElement('td');
+          const checkbox = document.createElement('label');
+          checkbox.innerHTML = `
+            <input type="checkbox" class="filled-in" name="risk_factor" value="${item.name}">
+            <span>${item.name}</span>
+          `;
+          newCell.appendChild(checkbox);
+          newRow.appendChild(newCell);
+          tbody.appendChild(newRow);
+        });
+      }
+
+      getData();
+    </script>
+
 </body>
 </html>
-
-<!-- hi -->

@@ -71,7 +71,7 @@
     <div class = "container">
         <h4>Database 
             <form id="form"> 
-                <input type="search" placeholder="Search...">
+                <input id="searchbar" type="text" name="search" placeholder="Search...">
                 <a class="btn-floating btn-small waves-effect waves-light">
                     <i class="material-icons">search</i>
                 </a>
@@ -80,104 +80,89 @@
 
         <table>
             <thead>
-                <!-- tr = table row -->
-                <tr>
-                    <!-- th = table header -->
-                    <th> </th>
-                    <th>Last Name</th>
-                    <th>Middle Initial</th>
-                    <th>First Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Weight(kg)</th>
-                    <th>Height(cm)</th>
-                    <th>Date of Birth</th>
-                    <th>Disease</th>
-                    <th> </th>
-
-                </tr>
+              <tr>
+                  <th></th>
+                  <th>Last Name</th>
+                  <th>Middle Initial</th>
+                  <th>First Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Weight(kg)</th>
+                  <th>Height(cm)</th>
+                  <th>Date of Birth</th>
+                  <th> </th>
+              </tr>
             </thead>
-            <tbody>
+            <tbody id="patientTableBody">
+              <% patient.forEach((patient) => { %>
                 <tr>
-                    <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
-                            <i class="material-icons">info</i>
-                        </a>
-                    </td>
-                    <td>Ekmekci</td>
-                    <td>Y</td>
-                    <td>Anna</td>
-                    <td>14</td>
-                    <td>F</td>
-                    <td>??</td>
-                    <td>??</td>
-                    <td>2008-05-??</td>
-                    <td>Lazy</td>
-                    <td>
-                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
-                            <i class="material-icons right">edit</i>Info/Edit
-                        </a>
-                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
-                            <i class="material-icons right">delete</i>Delete
-                        </a>
-                    </td>
+                  <td>
+                      <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
+                          <i class="material-icons">info</i>
+                      </a>
+                  </td>
+                  <td>
+                    <label>
+                      <span><%= patient.name_last %></span>
+                    </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.middle_initial %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.name_first %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.age %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.gender %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.weight %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.height %></span>
+                      </label>
+                  </td>
+                  <td>
+                      <label>
+                        <span><%= patient.dob %></span>
+                      </label>
+                  </td>
+                  <td>
+                    <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
+                      <i class="material-icons right">edit</i>Edit
+                    </a>
+                    <a class="btn-large waves-effect waves-light red right" href="/patients/<%= patient.patient_id %>/delete">
+                        <i class="material-icons right">delete</i>
+                        Delete
+                    </a>
+                  </td>
                 </tr>
-                <tr>
-                    <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
-                            <i class="material-icons">info</i>
-                        </a>
-                    </td>
-                    <td>Lee</td>
-                    <td>D</td>
-                    <td>Dyanne</td>
-                    <td>14</td>
-                    <td>F</td>
-                    <td>??</td>
-                    <td>??</td>
-                    <td>2008-11-??</td>
-                    <td>Slay</td>
-                    <td>
-                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
-                            <i class="material-icons right">edit</i>Info/Edit
-                        </a>
-                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
-                            <i class="material-icons right">delete</i>Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#inform">
-                            <i class="material-icons">info</i>
-                        </a>
-                    </td>
-                    <td>Smith</td>
-                    <td></td>
-                    <td>Johnson</td>
-                    <td>M</td>
-                    <td>44</td>
-                    <td>89</td>
-                    <td>183</td>
-                    <td>1979-05-??</td>
-                    <td>Cold</td>
-                    <td>
-                        <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
-                            <i class="material-icons right">edit</i>Info/Edit
-                        </a>
-                        <a class = "waves-effect waves-light btn-small red modal-trigger" href="#edit">
-                            <i class="material-icons right">delete</i>Delete
-                        </a>
-                    </td>
-                </tr>
+              <% }) %>
             </tbody>
-        </table>
+          </table>
         <div class = "section">
             
         </div>
         <p1>To add a new row, you have to take a new diagnosis test</p1>
 
     </div>
+
+
+
     
 
     <div class="modal" id ="edit">
@@ -191,6 +176,10 @@
             </a>
         </div>   
     </div>
+
+    <script>
+        
+    </script>
 
     <div class="modal" id="inform">
         <!-- This should be different for each patient -->
