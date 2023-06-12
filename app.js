@@ -16,6 +16,8 @@ app.set( "view engine", "ejs" );
 
 app.use(logger("dev"));
 app.use(express.static(__dirname+'/public'));
+app.use( express.urlencoded({ extended: false }) );
+
 
 
 
@@ -174,7 +176,7 @@ app.get("/patients/:id/delete", ( req, res ) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
-            res.status(500).send(error); //Internal Server Error
+            res.status(500).send(error); 
         else {
             res.redirect("/database");
         }
@@ -183,9 +185,28 @@ app.get("/patients/:id/delete", ( req, res ) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
-            res.status(500).send(error); //Internal Server Error
+            res.status(500).send(error); 
         else {
             res.redirect("/database");
+        }
+    });
+});
+
+const create_patient_sql = `
+    INSERT INTO patient
+        (name_first, middle_initial, name_last, age, gender, weight, height, dob)
+    VALUES
+        (?, ?, ?, ?, ?, ?, ?, ?, ?);
+`
+
+app.post("/intro", ( req, res ) => {
+    db.execute(create_patient_sql, [req.body.name_first, req.body.middle_initial, req.body.name_last, req.body.age, req.body.gender, req.body.weight, req.body.height, req.body.dob], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); 
+        else {
+            res.redirect(`/intro/${results.insertId}`);
         }
     });
 });
