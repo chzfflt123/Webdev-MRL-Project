@@ -52,7 +52,7 @@
         <h5>New Diagnosis.</h5>
         <h5>Add patient</h5>
 
-        <div class="section" id="add">
+        <form id="addForm" method="post" action="/intro">
             <form id="addForm">
                 <div class="row">
                     <div class="input-field col s5">
@@ -81,9 +81,9 @@
                     <div class="input-field col s4">
                         <select type="number" id="subjectInput" name="gender" id="subjectInput">
                             <option value="" disabled selected>Select Gender</option>
-                            <option value=1>Male</option>
-                            <option value=2>Female</option>
-                            <option value=3>Non-Binary</option>
+                            <option value=male>Male</option>
+                            <option value=female>Female</option>
+                            <option value=nonbinary>Non-Binary</option>
                           </select>
                           <label for="subjectInput">Gender</label>
                     </div>
@@ -113,7 +113,7 @@
                     Submit
                 </button>
             </form>
-        </div>
+        </form>
 
         <br>
         <br>
