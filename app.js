@@ -171,15 +171,12 @@ const delete_patient_sql = `
     WHERE
         patient_id = ?
 `
-app.get("/patients/:id/delete", ( req, res ) => {
+app.get("/database/:id/delete", ( req, res ) => {
     db.execute(delete_patient_xref_sql, [req.params.id], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); 
-        else {
-            res.redirect("/database");
-        }
     });
     db.execute(delete_patient_sql, [req.params.id], (error, results) => {
         if (DEBUG)
