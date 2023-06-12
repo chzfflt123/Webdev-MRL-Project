@@ -131,8 +131,6 @@ app.get('/database', (req, res, next) => {
 
         if (error)
             res.status(500).send(error);
-        else if (results.length == 0)
-            res.status(404).send(`No patient found with id = "${1}"`);
         else {
             let data = { patient: results }; 
             res.render('database', data);
