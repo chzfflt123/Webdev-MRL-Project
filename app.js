@@ -155,14 +155,30 @@ app.get('/database/details', (req, res, next) => {
 });
 
 
-const delete_patient_sql = `
+const delete_patient_xref_sql = `
     DELETE 
+    FROM
+        login_patient_xref
+    WHERE
+        patient_id = ?
+`
+const delete_patient_sql = `
+    DELETE
     FROM
         patient
     WHERE
-        patient_id = 1
+        patient_id = ?
 `
 app.get("/patients/:id/delete", ( req, res ) => {
+    db.execute(delete_patient_xref_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/database");
+        }
+    });
     db.execute(delete_patient_sql, [req.params.id], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
