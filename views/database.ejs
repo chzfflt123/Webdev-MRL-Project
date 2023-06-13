@@ -145,10 +145,14 @@
                     <a class = "waves-effect waves-light btn-small orange modal-trigger" href="/database/details">
                       <i class="material-icons right">edit</i>Edit
                     </a>
-                    <a class="btn-large waves-effect waves-light red right modal-trigger" href="#edit">
-                        <i class="material-icons right">delete</i>
-                        Delete
-                    </a>
+                    <td>
+                        <a class="btn-large waves-effect waves-light red right modal-trigger delete-btn"
+                            href="/database/<%= patient.patient_id %>/delete" data-patient-id="<%= patient.patient_id %>">
+                            <i class="material-icons right">delete</i>Delete
+                        </a>
+                    </td>
+                    
+                    
                   </td>
                 </tr>
               <% }) %>
@@ -171,9 +175,11 @@
             <p>You cannot restore data once it is deleted.</p>
         </div>
         <div class="modal-footer">
-            <a class = "waves-effect waves-light btn-small red modal-trigger" href="/database/<%= patient.patient_id %>/delete">
+            <a class="waves-effect waves-light btn-small red modal-trigger" href="/database/<%= patient.patient_id %>/delete">
                 <i class="material-icons right">delete_forever</i>Delete
             </a>
+            
+            
         </div>   
     </div>
 
