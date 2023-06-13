@@ -49,31 +49,31 @@
     </nav>
 
     <div class = "container">
-        <h4>Ekmekci, Anna Y</h4>
+        <h4><%= patient.name_last %>, <%= patient.name_first %> <%= patient.middle_initial %></h4>
         <table>
             <thead>
                 <!-- tr = table row -->
                 <tr>
                     <th class = "">Age:</th>
-                    <th>14</th>
+                    <th><%= patient.age %></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Gender:</td>
-                    <td>F</td>
+                    <td><%= patient.gender %></td>
                 </tr>
                 <tr>
                     <td>Weight(kg):</td>
-                    <td>??</td>
+                    <td><%= patient.weight %></td>
                 </tr>
                 <tr>
                     <td>Height(cm):</td>
-                    <td>??</td>
+                    <td><%= patient.height %></td>
                 </tr>
                 <tr>
                     <td>Date of Birth:</td>
-                    <td>2008-05-??</td>
+                    <td><%= patient.dob %></td>
                 </tr>
             </tbody>
         </table>

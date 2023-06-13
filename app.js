@@ -138,21 +138,27 @@ app.get('/database', (req, res, next) => {
     });
 });
 
-app.get('/database/details', (req, res, next) => {
-    db.query(database_detail_sql, (error, results) => {
+const get_patient_stuff_sql = `
+    SELECT * FROM patient
+    WHERE patient_id = ?
+`;
+
+app.get('/database/:id/details', (req, res, next) => {
+    db.query(get_patient_stuff_sql, [req.params.id], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
 
         if (error)
             res.status(500).send(error);
         else if (results.length == 0)
-            res.status(404).send(`No patient found with id = "${1}"`);
+            res.status(404).send(`No patient found with id = "${req.params.id}"`);
         else {
-            let data = { patient: results }; 
+            let data = { patient: results[0] }; // Access the first patient object from the results
             res.render('details', data);
         }
     });
 });
+
 
 
 const delete_patient_xref_sql = `
