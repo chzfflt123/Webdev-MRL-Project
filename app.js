@@ -131,8 +131,6 @@ app.get('/database', (req, res, next) => {
 
         if (error)
             res.status(500).send(error);
-        else if (results.length == 0)
-            res.status(404).send(`No patient found with id = "${1}"`);
         else {
             let data = { patient: results }; 
             res.render('database', data);
@@ -171,15 +169,12 @@ const delete_patient_sql = `
     WHERE
         patient_id = ?
 `
-app.get("/patients/:id/delete", ( req, res ) => {
+app.get("/database/:id/delete", ( req, res ) => {
     db.execute(delete_patient_xref_sql, [req.params.id], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); 
-        else {
-            res.redirect("/database");
-        }
     });
     db.execute(delete_patient_sql, [req.params.id], (error, results) => {
         if (DEBUG)
