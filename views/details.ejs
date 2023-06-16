@@ -90,20 +90,20 @@
     <div id="edit" class="modal">
         <div class = "container">
             <div class="section" id="add">
-                <form id="addForm">
+                <form id="updateForm" method="post" action="/database/update/<%= patient.patient_id%>">
                     <div class="row">
                         <div class="input-field col s5">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                            <input type="text" id="titleInput" name="name_first" class="validate" data-length="45" required>
                             <label for="titleInput">Patient First Name</label>
                         </div>
                         <div class="input-field col s4">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="1">
+                            <input type="text" id="titleInput" name="middle_initial" class="validate" data-length="1">
                             <label for="titleInput">Patient Middle Initial</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s5">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required>
+                            <input type="text" id="titleInput" name="name_last" class="validate" data-length="45" required>
                             <label for="titleInput">Patient Last Name</label>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <select type="number" id="subjectInput" name="subject" id="subjectInput">
+                            <select type="number" id="subjectInput" name="gender" id="subjectInput">
                                 <option value="" disabled selected>Select Gender</option>
                                 <option value=1>Male</option>
                                 <option value=2>Female</option>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="date" id="dueDateInput" name="DOB" id="dueDateInput">
+                            <input type="date" id="dueDateInput" name="dob" id="dueDateInput">
                             <label for="dueDateInput">DOB</label>
                         </div>
                     </div>

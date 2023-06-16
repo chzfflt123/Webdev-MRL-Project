@@ -211,3 +211,61 @@ app.post("/intro", ( req, res ) => {
         }
     });
 });
+
+
+// const update_patient_stuff_sql = `
+//     UPDATE
+//         patient
+//     SET
+//         name_first = ?,
+//         middle_initial = ?,
+//         name_last = ?, 
+//         age = ?,
+//         gender = ?,
+//         weight = ?,
+//         height = ?,
+//         dob = ?
+//     WHERE
+//         patient_id = ?
+
+
+const update_patient_stuff_sql = `
+    UPDATE 
+        patient
+    SET 
+        name_first = ?,
+        middle_initial = ?,
+        name_last = ?,
+        age = ?,
+        gender = ?,
+        weight = ?,
+        height = ?,
+        dob = ?
+    WHERE 
+        patient_id = ?
+`
+
+app.post('/database/update/:id', (req, res) => {
+    const patient_id = req.params.id;
+    const values = [
+        req.body.name_first,
+        req.body.middle_initial,
+        req.body.name_last,
+        req.body.age,
+        req.body.gender,
+        req.body.weight,
+        req.body.height,
+        req.body.dob,
+        patient_id
+    ];
+
+    db.execute(update_patient_stuff_sql, values, (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error);
+        else {
+            res.redirect(`/database`);
+        }
+    });
+});
