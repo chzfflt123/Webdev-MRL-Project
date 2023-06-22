@@ -1,6 +1,5 @@
 const db = require("./db_connection");
 
-/**** Read and print the subjects table ****/
 
 const select_patients_sql = "SELECT * FROM patient";
 

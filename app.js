@@ -212,23 +212,6 @@ app.post("/intro", ( req, res ) => {
     });
 });
 
-
-// const update_patient_stuff_sql = `
-//     UPDATE
-//         patient
-//     SET
-//         name_first = ?,
-//         middle_initial = ?,
-//         name_last = ?, 
-//         age = ?,
-//         gender = ?,
-//         weight = ?,
-//         height = ?,
-//         dob = ?
-//     WHERE
-//         patient_id = ?
-
-
 const update_patient_stuff_sql = `
     UPDATE 
         patient

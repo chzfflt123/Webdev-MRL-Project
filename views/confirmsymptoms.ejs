@@ -55,10 +55,8 @@
     </div>
 
     <script>
-        // Retrieve the selectedSymptoms array from localStorage
         const selectedSymptoms = JSON.parse(localStorage.getItem('selectedSymptoms'));
 
-        // Display the selected symptoms in an unordered list
         const selectedSymptomsList = document.getElementById('selected-symptoms');
         selectedSymptoms.forEach(symptom => {
             const li = document.createElement('li');
